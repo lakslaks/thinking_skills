@@ -1,0 +1,332 @@
+skills:
+  devil:
+    aliases:
+      - /devil
+      - devil's advocate
+      - challenge this
+    category: reasoning
+    reasoning_type: adversarial
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: inline
+    confidence_mode: normal
+    description: Argues the opposite side of a claim, plan, or decision to test it and surface objections the user has not considered.
+    version: 1.0
+  steelman:
+    aliases:
+      - /steelman
+      - steelman this
+      - strongest case against
+    category: reasoning
+    reasoning_type: supportive
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: inline
+    confidence_mode: normal
+    description: Builds the strongest possible case for the opposing side of a position, the version its smartest defenders would make.
+    version: 1.0
+  premortem:
+    aliases:
+      - /premortem
+      - pre-mortem
+      - assume this failed
+    category: planning
+    reasoning_type: predictive
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: inline
+    confidence_mode: exploratory
+    description: Assumes a plan has already failed and works backwards to find why.
+    version: 1.0
+  secondorder:
+    aliases:
+      - /secondorder
+      - second-order effects
+      - and then what
+    category: reasoning
+    reasoning_type: predictive
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: inline
+    confidence_mode: exploratory
+    description: Traces the consequences of a decision beyond the obvious first effect.
+    version: 1.0
+  redteam:
+    aliases:
+      - /redteam
+      - red team this
+      - try to break this
+    category: review
+    reasoning_type: adversarial
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: inline
+    confidence_mode: normal
+    description: Tries to break a plan, design, argument, or piece of work by hunting for edge cases and blind spots.
+    version: 1.0
+  roast:
+    aliases:
+      - /roast
+      - roast this
+      - brutal feedback
+    category: review
+    reasoning_type: adversarial
+    grounding_mode: user_only
+    grounding_priority:
+      - user_content
+      - attached_files
+    source_display: off
+    confidence_mode: conservative
+    description: Gives brutally honest feedback with no sugarcoating.
+    version: 1.0
+  assumptions:
+    aliases:
+      - /assumptions
+      - hidden assumptions
+      - what am I assuming
+    category: analysis
+    reasoning_type: diagnostic
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: inline
+    confidence_mode: conservative
+    description: Surfaces the hidden assumptions behind a plan or belief and flags the ones most likely to be wrong.
+    version: 1.0
+  matrix:
+    aliases:
+      - /matrix
+      - comparison table
+      - compare all options
+    category: decision-making
+    reasoning_type: diagnostic
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: footer
+    confidence_mode: conservative
+    description: Puts every option into one comparison table with criteria and a recommendation.
+    version: 1.0
+  ooda:
+    aliases:
+      - /ooda
+      - ooda loop
+      - observe orient decide act
+    category: decision-making
+    reasoning_type: diagnostic
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: inline
+    confidence_mode: normal
+    description: Runs the OODA loop (Observe, Orient, Decide, Act) on a fast-moving situation.
+    version: 1.0
+  steal:
+    aliases:
+      - /steal
+      - reverse engineer this
+      - why does this work
+    category: learning
+    reasoning_type: diagnostic
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: footer
+    confidence_mode: conservative
+    description: Reverse engineers why something works (a presentation, idea, post, product, or thought process) and extracts a reusable pattern.
+    version: 1.0
+  godmode:
+    aliases:
+      - /godmode
+      - go all out
+      - full creative mode
+    category: creativity
+    reasoning_type: generative
+    grounding_mode: none
+    source_display: off
+    confidence_mode: exploratory
+    description: Goes all out on creative or ambitious output, with bold ideas and no timid hedging.
+    version: 1.0
+  artifacts:
+    aliases:
+      - /artifacts
+      - make it visual
+      - visual output
+    category: creativity
+    reasoning_type: generative
+    grounding_mode: none
+    source_display: off
+    confidence_mode: normal
+    description: Produces visual or structured output the user can use directly, instead of plain text.
+    version: 1.0
+  ghost:
+    aliases:
+      - /ghost
+      - sound human
+      - humanize this
+    category: writing
+    reasoning_type: directive
+    grounding_mode: user_only
+    grounding_priority:
+      - user_content
+      - attached_files
+    source_display: off
+    confidence_mode: normal
+    description: Writes or rewrites text so it sounds like a real human, not AI.
+    version: 1.0
+  brief:
+    aliases:
+      - /brief
+      - three lines max
+      - ultra short
+    category: writing
+    reasoning_type: directive
+    grounding_mode: none
+    source_display: off
+    confidence_mode: normal
+    description: Answers in three lines maximum.
+    version: 1.0
+  silent:
+    aliases:
+      - /silent
+      - no explanation
+      - just do it
+    category: writing
+    reasoning_type: directive
+    grounding_mode: none
+    source_display: off
+    confidence_mode: normal
+    description: Does the task and skips the explanation.
+    version: 1.0
+  lockin:
+    aliases:
+      - /lockin
+      - stay on task
+      - no tangents
+    category: coaching
+    reasoning_type: directive
+    grounding_mode: none
+    source_display: off
+    confidence_mode: normal
+    description: Stays laser-focused on the stated task with no detours, tangents, or extras.
+    version: 1.0
+  lawyer:
+    aliases:
+      - /lawyer
+      - think like a lawyer
+      - defend or exploit
+      - legal lens
+    category: analysis
+    reasoning_type: adversarial
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: inline
+    confidence_mode: conservative
+    description: "Reads an incoming message or another prompt's output the way a lawyer would: how it could be defended, and how it could be used against the user or for them."
+    version: 1.0
+  catchup:
+    aliases:
+      - /catchup
+      - catch me up
+      - join the conversation
+      - missing context
+    category: analysis
+    reasoning_type: diagnostic
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: footer
+    confidence_mode: conservative
+    description: Reconstructs the likely context of a message that arrives without history (a bare data dump, a mid-thread forward) and offers safe ways to join the conversation.
+    version: 1.0
+  distill:
+    aliases:
+      - /distill
+      - extract the core
+      - boil this down
+      - what's the real point
+    category: analysis
+    reasoning_type: diagnostic
+    grounding_mode: opportunistic
+    grounding_priority:
+      - user_content
+      - attached_files
+      - agent_knowledge
+      - m365_content
+      - web_sources
+      - model_knowledge
+    source_display: footer
+    confidence_mode: conservative
+    description: Extracts the context, intent, and core message of a long paper or document, separates what carries the argument from the chaff, and maps what is worth reading.
+    version: 1.0
+  sources:
+    aliases:
+      - /sources
+    category: control
+    reasoning_type: directive
+    grounding_mode: none
+    source_display: off
+    confidence_mode: normal
+    description: Controls how knowledge sources are shown for the rest of the conversation.
+    version: 1.0

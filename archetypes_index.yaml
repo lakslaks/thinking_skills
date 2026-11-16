@@ -1,0 +1,135 @@
+# Derived from archetypes.agent.md. The agent does not depend on this file;
+# it is for tooling, review and keeping the lens catalogue in one scannable place.
+# If the two differ, archetypes.agent.md wins.
+version: 1
+agent_instruction: archetypes.agent.md
+
+defaults:
+  weight: 0
+  scale: [0, 5]
+  max_active_lenses: 3
+  bare_lens_weight: 3
+  auto_select: true
+  sweep: false
+
+invocation:
+  syntax: "risk:4 flow:2 [+sweep]"
+  modes: [apply, detect]
+
+weights:
+  primary: {range: [4, 5], effect: Full depth, wins conflicts, flags minor findings}
+  secondary: {range: [2, 3], effect: Flags moderate and major findings}
+  background: {range: [1, 1], effect: Flags major findings only}
+  silent: {range: [0, 0], effect: No output unless sweep}
+
+lenses:
+  - id: risk
+    name: Risk-Centric
+    file: risk.archetype.md
+    optimises_for: Preventing loss
+    notices_first: Failure scenarios
+    question: What breaks, and what does it cost when it does?
+    use_when: exposure, failure, loss, launch or change
+    minimal_pass: Most likely failure; does anything catch it?
+    tension_with: [operations, customer, strategy]
+    synergy_with: [compliance, data]
+
+  - id: compliance
+    name: Compliance-Centric
+    file: compliance.archetype.md
+    optimises_for: Regulatory adherence
+    notices_first: Regulations
+    question: Which rule applies here, and can we show we followed it?
+    use_when: rules, regulation, policy, audit, approvals
+    minimal_pass: Likeliest obligation; is there evidence?
+    tension_with: [customer, operations, strategy]
+    synergy_with: [risk, data]
+
+  - id: customer
+    name: Customer-Centric
+    file: customer.archetype.md
+    optimises_for: User outcomes
+    notices_first: Friction
+    question: What is the person on the receiving end trying to do, and what gets in their way?
+    use_when: users, experience, service, adoption
+    minimal_pass: Greatest end-user friction.
+    tension_with: [risk, compliance, operations]
+    synergy_with: [strategy]
+
+  - id: operations
+    name: Operations-Centric
+    file: operations.archetype.md
+    optimises_for: Throughput and efficiency
+    notices_first: Bottlenecks
+    question: What is the slowest or most expensive step, and what is its capacity?
+    use_when: volume, cost, capacity, delivery at scale
+    minimal_pass: Likely bottleneck and its limit.
+    tension_with: [risk, compliance, customer, integration]
+    synergy_with: [flow]
+
+  - id: flow
+    name: Flow-Centric
+    file: flow.archetype.md
+    optimises_for: Movement across networks
+    notices_first: Hand-offs
+    question: Where does this change hands, and what is lost or delayed in transit?
+    use_when: processes, sequences, handovers
+    minimal_pass: Riskiest hand-off and its owner.
+    tension_with: [operations]
+    synergy_with: [integration, operations, data]
+
+  - id: integration
+    name: Integration-Centric
+    file: integration.archetype.md
+    optimises_for: Cross-functional alignment
+    notices_first: Boundaries
+    question: Where do teams, systems or definitions meet, and do they agree?
+    use_when: multiple teams, systems, vendors, definitions
+    minimal_pass: Where two parties likely mean different things.
+    tension_with: [operations, strategy]
+    synergy_with: [flow, data]
+
+  - id: data
+    name: Data-Centric
+    file: data.archetype.md
+    optimises_for: Information quality
+    notices_first: Data quality
+    question: Where does this information come from, and can it be trusted?
+    use_when: figures, claims, metrics, evidence quality
+    minimal_pass: Least trustworthy input and why.
+    tension_with: [strategy, operations]
+    synergy_with: [compliance, risk, integration, flow]
+
+  - id: strategy
+    name: Strategy-Centric
+    file: strategy.archetype.md
+    optimises_for: Business outcomes
+    notices_first: Business goals
+    question: What outcome does this serve, and is it the right outcome?
+    use_when: goals, priorities, investment, direction
+    minimal_pass: Outcome served, or none stated.
+    tension_with: [risk, compliance, data, integration]
+    synergy_with: [customer]
+
+tensions:
+  - {pair: [risk, operations], conflict: controls vs speed}
+  - {pair: [risk, customer], conflict: controls vs smoothness}
+  - {pair: [risk, strategy], conflict: loss avoidance vs ambition}
+  - {pair: [compliance, customer], conflict: mandatory rules vs smoothness}
+  - {pair: [compliance, operations], conflict: mandatory rules vs throughput}
+  - {pair: [compliance, strategy], conflict: mandatory rules vs shifting priorities}
+  - {pair: [customer, operations], conflict: individual vs standardised}
+  - {pair: [operations, flow], conflict: local vs end-to-end optimisation}
+  - {pair: [operations, integration], conflict: independent speed vs alignment overhead}
+  - {pair: [integration, strategy], conflict: consensus vs decisive direction}
+  - {pair: [data, strategy], conflict: trusted inputs vs deciding now}
+  - {pair: [data, operations], conflict: trusted inputs vs speed}
+
+overlaps:
+  - [flow, integration]
+  - [flow, operations]
+  - [compliance, data]
+  - [risk, compliance]
+  - [risk, data]
+  - [customer, strategy]
+  - [data, integration]
